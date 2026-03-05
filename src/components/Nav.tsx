@@ -21,12 +21,12 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <div className="relative w-11 h-11 overflow-hidden rounded-sm shrink-0">
+          <div className="relative w-11 h-11 shrink-0">
             <Image
-              src="/images/504101250_17846245545496592_2278711456370127142_n.jpg"
+              src="/images/duffybadge.png"
               alt="Duffy Construction LLC"
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </div>
           <div className="flex flex-col leading-none">
