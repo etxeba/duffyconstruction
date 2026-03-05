@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Projects | Duffy Construction",
@@ -14,7 +15,8 @@ const projects = [
     sqft: "4,200 sq ft",
     description:
       "A sweeping new-build on one of Pacific Heights' most coveted streets. Designed in collaboration with a local architect, featuring a roof deck with bay views, open-plan entertaining floors, and a full lower-level guest suite.",
-    gradient: "from-stone-400 to-stone-600",
+    image: "/images/562004184_17862825777496592_5147611480708400393_n.jpg",
+    alt: "Modern kitchen with light wood island, marble countertop, and leather barstools",
   },
   {
     title: "Noe Valley Kitchen & Primary Suite",
@@ -24,7 +26,8 @@ const projects = [
     sqft: "1,800 sq ft",
     description:
       "A complete reimagination of a 1940s Craftsman's ground floor — blending the home's original character with a fully modern kitchen, breakfast room, and adjacent primary suite with spa bath.",
-    gradient: "from-terra-200 to-terra-500",
+    image: "/images/572148719_17865014400496592_2523341007754314006_n.jpg",
+    alt: "Dark luxury kitchen with black cabinets, gold hardware, and honeycomb backsplash",
   },
   {
     title: "Haight-Ashbury Victorian Restoration",
@@ -34,7 +37,8 @@ const projects = [
     sqft: "3,100 sq ft",
     description:
       "Meticulous restoration of an 1892 Painted Lady, preserving original millwork and plaster detailing while integrating updated systems, seismic retrofitting, and a seamlessly modernized kitchen.",
-    gradient: "from-cream-300 to-stone-400",
+    image: "/images/642419457_17879741880496592_4616791475486331085_n.jpg",
+    alt: "Hallway with bold floral wallpaper and hardwood floors leading to a tiled bathroom",
   },
   {
     title: "Russian Hill Penthouse",
@@ -44,7 +48,8 @@ const projects = [
     sqft: "2,600 sq ft",
     description:
       "Top-floor transformation of a classic Russian Hill condominium, opening up the entire floor plan, adding a chef's kitchen, wet bar, and custom library with floor-to-ceiling built-ins.",
-    gradient: "from-stone-600 to-stone-800",
+    image: "/images/562457234_17862825900496592_8760888062752089865_n.jpg",
+    alt: "Modern white bathroom with gold fixtures and frameless walk-in shower",
   },
   {
     title: "Twin Peaks Custom Home",
@@ -54,7 +59,8 @@ const projects = [
     sqft: "3,800 sq ft",
     description:
       "A bold hillside home engineered for San Francisco's challenging terrain, offering panoramic views from three levels of glass-fronted living space, a cantilevered deck, and a two-car garage.",
-    gradient: "from-terra-300 to-terra-700",
+    image: "/images/561619316_17862825624496592_2555780607546507481_n.jpg",
+    alt: "Dark green zellige tile bathroom with fluted wood vanity and illuminated mirror",
   },
   {
     title: "Mission Dolores ADU + Renovation",
@@ -64,7 +70,8 @@ const projects = [
     sqft: "900 sq ft ADU",
     description:
       "Addition of a detached accessory dwelling unit to a Mission Dolores lot, alongside a full renovation of the primary home's second floor — all completed within 14 months.",
-    gradient: "from-cream-200 to-cream-400",
+    image: "/images/583510980_17866601583496592_952832549729722277_n.jpg",
+    alt: "Dark espresso vanity with green tile walls and gold fixtures",
   },
 ];
 
@@ -90,11 +97,14 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, i) => (
               <article key={i} className="group flex flex-col">
-                {/* Image placeholder */}
-                <div className={`relative aspect-[4/3] bg-gradient-to-br ${project.gradient} mb-6 overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/40 text-xs tracking-widest uppercase font-sans">Project Photo</span>
-                  </div>
+                {/* Image */}
+                <div className="relative aspect-[4/3] mb-6 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors duration-300" />
                   {/* Type badge */}
                   <div className="absolute top-4 left-4 bg-cream-100 px-3 py-1">

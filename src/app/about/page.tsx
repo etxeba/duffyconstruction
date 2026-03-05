@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About | Duffy Construction",
@@ -72,13 +73,16 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Image placeholder */}
+            {/* Image */}
             <div className="sticky top-28">
-              <div className="relative aspect-[3/4] bg-gradient-to-br from-stone-300 to-terra-300 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white/50 text-xs tracking-widest uppercase font-sans">Team Photo</span>
-                </div>
-                <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-terra-600" />
+              <div className="relative aspect-[3/4] overflow-hidden">
+                <Image
+                  src="/images/587602941_17867908071496592_6963609221874814487_n.jpg"
+                  alt="Blue zellige tile shower with skylight and gold hardware"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-terra-600 -z-10" />
               </div>
             </div>
 

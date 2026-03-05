@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const stats = [
   { value: "25+", label: "Years in Business" },
@@ -55,20 +56,43 @@ const testimonials = [
   },
 ];
 
+const featuredProjects = [
+  {
+    label: "Pacific Heights Residence",
+    type: "Custom Build",
+    year: "2024",
+    image: "/images/642087133_17879741871496592_7238232007788388898_n.jpg",
+    alt: "Custom built-in cabinetry with lattice doors",
+  },
+  {
+    label: "Noe Valley Kitchen & Bath",
+    type: "Luxury Renovation",
+    year: "2024",
+    image: "/images/642541260_17879739297496592_455130578999384048_n.jpg",
+    alt: "Bathroom with gray subway tile and patterned floor",
+  },
+  {
+    label: "Haight-Ashbury Victorian",
+    type: "Historic Restoration",
+    year: "2023",
+    image: "/images/568171484_17863987626496592_5384976402719089360_n.jpg",
+    alt: "Navy bathroom with antique dresser vanity and mosaic floor",
+  },
+];
+
 export default function Home() {
   return (
     <>
       {/* Hero */}
       <section className="relative h-screen flex items-center overflow-hidden">
-        {/* Background gradient standing in for a hero image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-800 via-stone-700 to-terra-900" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          }}
+        <Image
+          src="/images/572148719_17865014400496592_2523341007754314006_n.jpg"
+          alt="Dark luxury kitchen with gold hardware"
+          fill
+          className="object-cover"
+          priority
         />
+        <div className="absolute inset-0 bg-stone-900/60" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12 w-full">
           <div className="max-w-2xl">
             <p className="section-label text-terra-300 mb-6">San Francisco&apos;s Premier Builder</p>
@@ -114,13 +138,16 @@ export default function Home() {
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Image placeholder */}
-            <div className="relative aspect-[4/5] bg-stone-200 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-stone-300 via-cream-300 to-terra-200 flex items-center justify-center">
-                <span className="text-stone-400 text-sm tracking-widest uppercase font-sans">Project Photo</span>
-              </div>
+            {/* Image */}
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src="/images/573645951_17865753090496592_6301026469543731515_n.jpg"
+                alt="Antique carved barn door opening to a classic bathroom"
+                fill
+                className="object-cover"
+              />
               {/* Accent block */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-terra-600" />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-terra-600 -z-10" />
             </div>
 
             {/* Content */}
@@ -176,21 +203,16 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { label: "Pacific Heights Residence", type: "Custom Build", year: "2024" },
-              { label: "Noe Valley Kitchen & Bath", type: "Luxury Renovation", year: "2024" },
-              { label: "Haight-Ashbury Victorian", type: "Historic Restoration", year: "2023" },
-            ].map((project, i) => (
+            {featuredProjects.map((project, i) => (
               <div key={i} className="group cursor-pointer">
-                <div className={`relative aspect-[4/3] mb-4 overflow-hidden ${
-                  i === 0 ? "bg-gradient-to-br from-stone-400 to-stone-600"
-                  : i === 1 ? "bg-gradient-to-br from-terra-200 to-terra-400"
-                  : "bg-gradient-to-br from-cream-300 to-stone-400"
-                }`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/50 text-xs tracking-widest uppercase font-sans">Project Photo</span>
-                  </div>
-                  <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/30 transition-colors duration-300" />
+                <div className="relative aspect-[4/3] mb-4 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors duration-300" />
                 </div>
                 <p className="section-label mb-1">{project.type} · {project.year}</p>
                 <h3 className="font-serif text-xl text-stone-900 group-hover:text-terra-600 transition-colors">{project.label}</h3>

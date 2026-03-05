@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -19,9 +20,19 @@ export default function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-cream-100/95 backdrop-blur-sm border-b border-cream-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="font-serif text-xl text-stone-900 tracking-wide">Duffy Construction</span>
-          <span className="text-[10px] tracking-[0.3em] text-terra-600 uppercase font-sans">San Francisco</span>
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative w-11 h-11 overflow-hidden rounded-sm shrink-0">
+            <Image
+              src="/images/504101250_17846245545496592_2278711456370127142_n.jpg"
+              alt="Duffy Construction LLC"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-serif text-xl text-stone-900 tracking-wide">Duffy Construction</span>
+            <span className="text-[10px] tracking-[0.3em] text-terra-600 uppercase font-sans">San Francisco</span>
+          </div>
         </Link>
 
         {/* Desktop nav */}
