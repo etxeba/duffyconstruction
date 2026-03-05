@@ -5,6 +5,8 @@ import type { FormEvent } from "react";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -21,10 +23,21 @@ export default function ContactPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    // In production: send to your backend / form service here
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+    setLoading(false);
+    if (res.ok) {
+      setSubmitted(true);
+    } else {
+      setError('Something went wrong. Please try again or email us directly.');
+    }
   }
 
   return (
@@ -208,9 +221,13 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary w-full text-center py-4">
-                    Send Inquiry
+                  <button type="submit" disabled={loading} className="btn-primary w-full text-center py-4 disabled:opacity-60">
+                    {loading ? 'Sending…' : 'Send Inquiry'}
                   </button>
+
+                  {error && (
+                    <p className="text-sm text-red-600 text-center">{error}</p>
+                  )}
 
                   <p className="text-xs text-stone-400 text-center">
                     We respect your privacy and will never share your information.
