@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     html: `
       <div style="font-family: Georgia, serif; max-width: 600px; color: #1c1917;">
         <h2 style="margin-bottom: 4px;">New Project Inquiry</h2>
-        <p style="color: #78716c; font-size: 13px; margin-top: 0;">Submitted via duffyconstruction.vercel.app</p>
+        <p style="color: #78716c; font-size: 13px; margin-top: 0;">Submitted via duffyconstruction.com</p>
         <hr style="border: none; border-top: 1px solid #e7e5e4; margin: 20px 0;" />
 
         <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
